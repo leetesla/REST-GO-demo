@@ -101,7 +101,12 @@ func ApiKeyGet(mapParams map[string]string, strRequestPath string) string {
 	mapParams["SignatureVersion"] = "2"
 	mapParams["Timestamp"] = timestamp
 
-	hostName := config.HOST_NAME
+        urlObj, err := url.Parse(config.HOST_NAME)
+	if err != nil {
+		fmt.Println("config.HOST_NAME Parse error: ", err)
+	}
+        hostName := urlObj.Host
+	
 	mapParams["Signature"] = CreateSign(mapParams, strMethod, hostName, strRequestPath, config.SECRET_KEY)
 
 	if config.ENABLE_PRIVATE_SIGNATURE == true {
@@ -132,7 +137,11 @@ func ApiKeyPost(mapParams map[string]string, strRequestPath string) string {
 	mapParams2Sign["SignatureVersion"] = "2"
 	mapParams2Sign["Timestamp"] = timestamp
 
-	hostName := config.HOST_NAME
+	urlObj, err := url.Parse(config.HOST_NAME)
+	if err != nil {
+		fmt.Println("config.HOST_NAME Parse error: ", err)
+	}
+        hostName := urlObj.Host
 
 	mapParams2Sign["Signature"] = CreateSign(mapParams2Sign, strMethod, hostName, strRequestPath, config.SECRET_KEY)
 
