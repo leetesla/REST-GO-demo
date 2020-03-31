@@ -76,10 +76,10 @@ func HttpPostRequest(strUrl string, mapParams map[string]string) string {
 	request.Header.Add("Accept-Language", "zh-cn")
 
 	response, err := httpClient.Do(request)
-	defer response.Body.Close()
 	if nil != err {
 		return err.Error()
 	}
+	defer response.Body.Close()
 
 	body, err := ioutil.ReadAll(response.Body)
 	if nil != err {

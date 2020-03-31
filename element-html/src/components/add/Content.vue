@@ -148,8 +148,8 @@
           Model:"1",
           
           apiKey:{
-            AccessKey: 'yh4fhmvs5k-0143d1a7-d33d15da-81fee',
-            SecretKey: 'eb2542c3-c614c424-cacfc445-23121',
+            AccessKey: 'xxx',
+            SecretKey: 'xxx',
           },
           form: {
             AccountId: '8101421',
@@ -158,12 +158,12 @@
           },
           accounts:[],
           stracy:{
-            MinPrice:"8000",
-            MaxPrice:"12000",
-            HeightPrice:"100",
-            Amount:"20",
-            SellPrice:"150",
-            Capital:"1000",
+            MinPrice:"6000",
+            MaxPrice:"7000",
+            HeightPrice:"2.1",
+            Amount:"1000",
+            SellPrice:"3",//
+            Capital:"6000", //成本
           },
           options:[],//BuyMount BuyPrice SellPrice
           Quotes:["usdt","btc","eth","ht","husd","alts"],//交易对计价币

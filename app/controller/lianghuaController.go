@@ -3,24 +3,27 @@ package controller
 import (
 	"encoding/json"
 	"log"
+	"math"
 	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/onethefour/REST-GO-demo/app/models"
 	"github.com/onethefour/REST-GO-demo/app/robot"
+	"github.com/onethefour/REST-GO-demo/app/utils"
 	//"github.com/onethefour/REST-GO-demo/models"
 )
 
 //运行服务
-func init(){
-	list ,err := new(models.Stracy).ListRun()
+func init() {
+	list, err := new(models.Stracy).ListRun()
 	if err != nil {
 		panic(err.Error())
 	}
-	for i:=0;i<len(list);i++{
+	for i := 0; i < len(list); i++ {
 		go robot.NewGridBuy(list[i].Id, list[i].Model, list[i].AccountId, list[i].BaseCurrency, list[i].QuoteCurrency, list[i].Datas, list[i].Owner, list[i].AccessKey, list[i].SecretKey).Start()
 	}
 }
+
 type LianghuaController struct {
 }
 
@@ -215,9 +218,9 @@ func (ctl *LianghuaController) edit(ctx *gin.Context) {
 	for i := 0; i < 100 && Price > params.MinPrice; i++ {
 		tctxt := new(robot.Ctxt)
 		tctxt.BuyMount = params.Amount
-		tctxt.BuyPrice = Price
-		tctxt.SellPrice = Price + params.SellPrice
-		Price -= params.HeightPrice
+		tctxt.BuyPrice = utils.Digits(params.MaxPrice*math.Pow((100-params.HeightPrice)/100, float64(i)), 3)
+		tctxt.SellPrice = utils.Digits(tctxt.BuyPrice*(100+params.SellPrice)/100, 3)
+		Price = tctxt.BuyPrice
 		newCtxts = append(newCtxts, tctxt)
 	}
 	datas, _ := json.Marshal(newCtxts)
@@ -244,9 +247,9 @@ func (ctl *LianghuaController) add(ctx *gin.Context) {
 	for i := 0; i < 100 && Price > params.MinPrice; i++ {
 		tctxt := new(robot.Ctxt)
 		tctxt.BuyMount = params.Amount
-		tctxt.BuyPrice = Price
-		tctxt.SellPrice = Price + params.SellPrice
-		Price -= params.HeightPrice
+		tctxt.BuyPrice = utils.Digits(params.MaxPrice*math.Pow((100-params.HeightPrice)/100, float64(i)), 3)
+		tctxt.SellPrice = utils.Digits(tctxt.BuyPrice*(100+params.SellPrice)/100, 3)
+		Price = tctxt.BuyPrice
 		ctxts = append(ctxts, tctxt)
 	}
 	datas, _ := json.Marshal(ctxts)

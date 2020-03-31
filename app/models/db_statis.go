@@ -90,8 +90,10 @@ func (m *Statis) Get(StracyId int) (*Statis, error) {
 		return nil, err
 	}
 	defer engineScan.Close()
+	engineScan.ShowSQL(true)
+	defer engineScan.ShowSQL(false)
 	db := new(Statis)
-	m.StracyId = StracyId
+	db.StracyId = StracyId
 	has, err := engineScan.Get(db)
 	if err != nil {
 		return nil, err

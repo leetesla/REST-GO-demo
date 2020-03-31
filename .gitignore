@@ -1,2 +1,5 @@
 /REST-GO-demo
 /log/*
+/cmd
+/starecms.db
+/nohup.out

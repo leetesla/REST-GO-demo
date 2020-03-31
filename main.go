@@ -2,11 +2,12 @@ package main
 
 import (
 	"log"
+
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 
-	"github.com/onethefour/REST-GO-demo/app/utils"
 	"github.com/onethefour/REST-GO-demo/app"
+	"github.com/onethefour/REST-GO-demo/app/utils"
 )
 
 func init() {
@@ -25,6 +26,6 @@ func main() {
 
 	app.Router(router)
 
-	router.Run(":8000")
+	router.Run(":9800")
 
 }

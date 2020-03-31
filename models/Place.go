@@ -15,3 +15,31 @@ type PlaceReturn struct {
 	ErrCode string `json:"err-code"`
 	ErrMsg  string `json:"err-msg"`
 }
+
+type OrderReturn struct {
+	Status string `json:"status"`
+	Data   Order  `json:"data"`
+}
+
+type Order struct {
+	Id              uint64  `json:"id"`
+	Symbol          string  `json:"symbol"`
+	Accountid       uint64  `json:"account-id"`
+	Amount_f        float64 `json:"-"`
+	Amount          string  `json:"amount"` //订单数量
+	Price_f         float64 `json:"-"`
+	Price           string  `json:"price"`
+	Createdat       uint64  `json:"created-at"`
+	Type            string  `json:"type"`
+	Fieldamount     string  `json:"field-amount"`      //已成交数量
+	Fieldcashamount string  `json:"field-cash-amount"` //已成交总金额
+	Fieldfees       string  `json:"field-fees"`        //已成交手续费（买入为币，卖出为钱）
+	Finishedat      uint64  `json:"finished-at"`       //订单变为终结态的时间，不是成交时间，包含“已撤单”状态
+	Userid          uint64  `json:"user-id"`
+	Source          string  `json:"source"`
+	//submitted 已提交, partial-filled 部分成交, partial-canceled 部分成交撤销, filled 完全成交, canceled 已撤销， created
+	State      string `json:"state"`
+	Canceledat uint64 `json:"canceled-at"`
+	Exchange   string `json:"exchange"`
+	Batch      string `json:"batch"`
+}

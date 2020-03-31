@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"log"
 	"strconv"
 
 	appmodels "github.com/onethefour/REST-GO-demo/app/models"
@@ -59,11 +60,12 @@ func (m *GridBuy) SellPrice() (float64, error) {
 func (m *GridBuy) BuyMarket(_usdt float64) error {
 	resq := models.PlaceRequestParams{
 		AccountID: m.AccountId,
-		Amount:    m.String(_usdt, m.PricePrecision),
+		Amount:    m.String(_usdt, m.AmountPrecision),
 		Price:     "",
 		Source:    "api",
 		Symbol:    m.BaseCurrency + m.QuoteCurrency,
 		Type:      "buy-market"}
+	log.Println(m.AmountPrecision, resq)
 	ret := m.HuoBi.Place(resq)
 	if ret.Status != "ok" {
 		return errors.New(ret.ErrMsg)

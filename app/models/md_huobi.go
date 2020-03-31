@@ -10,8 +10,8 @@ import (
 	"github.com/onethefour/REST-GO-demo/untils"
 )
 
-//yh4fhmvs5k-0143d1a7-d33d15da-81fee
-//eb2542c3-c614c424-cacfc445-23121
+//xxx
+//xxx
 type HuoBiEx struct {
 	ACCESS_KEY string
 	SECRET_KEY string
@@ -23,10 +23,10 @@ type HuoBiEx struct {
 func NewHuoBiEx(accessKey, secretKey string) *HuoBiEx {
 	m := new(HuoBiEx)
 	if accessKey == "" {
-		accessKey = "yh4fhmvs5k-0143d1a7-d33d15da-81fee"
+		accessKey = "xxx"
 	}
 	if secretKey == "" {
-		secretKey = "eb2542c3-c614c424-cacfc445-23121"
+		secretKey = "xxx"
 	}
 	//m.AccountId = AccountId
 	m.ACCESS_KEY = accessKey
