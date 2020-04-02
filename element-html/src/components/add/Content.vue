@@ -159,7 +159,7 @@
           accounts:[],
           stracy:{
             MinPrice:"6000",
-            MaxPrice:"7000",
+            MaxPrice:"12000",
             HeightPrice:"2.1",
             Amount:"1000",
             SellPrice:"3",//

@@ -215,11 +215,14 @@ func (ctl *LianghuaController) edit(ctx *gin.Context) {
 	}
 	Price := params.MaxPrice
 	newCtxts := make([]*robot.Ctxt, 0)
+	TotalBaseCurrency := float64(0)
 	for i := 0; i < 100 && Price > params.MinPrice; i++ {
 		tctxt := new(robot.Ctxt)
 		tctxt.BuyMount = params.Amount
 		tctxt.BuyPrice = utils.Digits(params.MaxPrice*math.Pow((100-params.HeightPrice)/100, float64(i)), 3)
 		tctxt.SellPrice = utils.Digits(tctxt.BuyPrice*(100+params.SellPrice)/100, 3)
+		tctxt.TotalBaseCurrency = TotalBaseCurrency + utils.Digits(params.Amount/tctxt.BuyPrice, 4)
+		TotalBaseCurrency = tctxt.TotalBaseCurrency
 		Price = tctxt.BuyPrice
 		newCtxts = append(newCtxts, tctxt)
 	}
@@ -244,11 +247,14 @@ func (ctl *LianghuaController) add(ctx *gin.Context) {
 	}
 	Price := params.MaxPrice
 	ctxts := make([]*robot.Ctxt, 0)
+	TotalBaseCurrency := float64(0)
 	for i := 0; i < 100 && Price > params.MinPrice; i++ {
 		tctxt := new(robot.Ctxt)
 		tctxt.BuyMount = params.Amount
 		tctxt.BuyPrice = utils.Digits(params.MaxPrice*math.Pow((100-params.HeightPrice)/100, float64(i)), 3)
 		tctxt.SellPrice = utils.Digits(tctxt.BuyPrice*(100+params.SellPrice)/100, 3)
+		tctxt.TotalBaseCurrency = TotalBaseCurrency + utils.Digits(params.Amount/tctxt.BuyPrice, 4)
+		TotalBaseCurrency = tctxt.TotalBaseCurrency
 		Price = tctxt.BuyPrice
 		ctxts = append(ctxts, tctxt)
 	}

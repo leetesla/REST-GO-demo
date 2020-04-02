@@ -18,7 +18,8 @@ func ParseToString(val interface{}) string {
 	case string:
 		return t
 	default:
-		panic(fmt.Errorf("invalid value type", t))
+		return "0"
+		//panic(fmt.Errorf("invalid value type", t))
 	}
 }
 
