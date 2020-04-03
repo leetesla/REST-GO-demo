@@ -146,7 +146,7 @@ func (m *GridBuy) classical_clear_order() (affected bool, err error) {
 			if err != nil {
 				return affected, err
 			}
-			if orderReturn.Data.Createdat > 0 {
+			if orderReturn.Data.Finishedat > 0 {
 				m.Datas[i].BuyOrder = ""
 				affected = true
 			}
@@ -261,7 +261,7 @@ func (m *GridBuy) classica_new_order() (affected bool, err error) {
 	if activeIndex < len(m.Datas)-1 {
 		if m.Datas[activeIndex+1].BuyOrder == "" {
 			buyAmount := m.Datas[activeIndex+1].TotalBaseCurrency - nowBtc
-			orderid, err := m.BuyOrder(buyAmount, m.Datas[activeIndex+1].BuyPrice)
+			orderid, err := m.BuyOrder(utils.Digits(buyAmount, 6), m.Datas[activeIndex+1].BuyPrice)
 			if err != nil {
 				log.Println(err.Error())
 				return affected, err
