@@ -2,7 +2,6 @@ package utils
 
 import (
 	"fmt"
-	"log"
 	"strconv"
 )
 
@@ -34,7 +33,7 @@ func Digits(number float64, num uint64) float64 {
 		//log.Println(i)
 		if number_str[i] == '.' {
 			posOfPoint = i
-			log.Println(number_str[i], posOfPoint)
+			//log.Println(number_str[i], posOfPoint)
 		}
 		if !start {
 			if number_str[i] != '0' && number_str[i] != '.' {

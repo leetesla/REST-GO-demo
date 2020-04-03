@@ -1,7 +1,6 @@
 package models
 
 import (
-	"log"
 	"time"
 
 	"github.com/onethefour/REST-GO-demo/app/utils"
@@ -17,7 +16,7 @@ func init() {
 	if err != nil {
 		panic(err.Error())
 	}
-	log.Println("init")
+	//log.Println("init")
 }
 
 //Stracy 策略配置
@@ -50,7 +49,7 @@ type Stracy struct {
 	//模式 1,正常模式 2,自动买手动卖 3,自动卖手动买
 	Model int64 `xorm:"BIGINT(20)"`
 
-	Datas string `xorm:"CHAR(66)"`
+	Datas string `xorm:"CHAR(1024)"`
 	//1 启动服务 0 不启动
 	Run int64 `xorm:"BIGINT(20)"`
 
@@ -151,6 +150,8 @@ func (m *Stracy) ListRun() ([]*Stracy, error) {
 		return nil, err
 	}
 	defer engineScan.Close()
+	// engineScan.ShowSQL(true)
+	// defer engineScan.ShowSQL(false)
 	infos := make([]*Stracy, 0)
 	err = engineScan.SQL("select * from " + m.TableName() + " where run=1").Find(&infos)
 	return infos, err

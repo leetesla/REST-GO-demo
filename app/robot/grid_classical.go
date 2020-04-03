@@ -2,6 +2,8 @@ package robot
 
 import (
 	"log"
+
+	"github.com/onethefour/REST-GO-demo/app/utils"
 )
 
 // work_classical 经典网格策略
@@ -37,6 +39,7 @@ func (m *GridBuy) work_classical() {
 			if err != nil {
 				log.Println(err.Error())
 			}
+			continue
 		}
 	}
 }
@@ -141,7 +144,7 @@ func (m *GridBuy) classical_clear_order() (affected bool, err error) {
 		if orderId != "" {
 			orderReturn, err := m.GetOrder(orderId)
 			if err != nil {
-				return false, err
+				return affected, err
 			}
 			if orderReturn.Data.Createdat > 0 {
 				m.Datas[i].BuyOrder = ""
@@ -152,14 +155,13 @@ func (m *GridBuy) classical_clear_order() (affected bool, err error) {
 		if orderId != "" {
 			orderReturn, err := m.GetOrder(orderId)
 			if err != nil {
-				return false, err
+				return affected, err
 			}
-			if orderReturn.Data.Createdat > 0 {
+			if orderReturn.Data.Finishedat > 0 {
 				m.Datas[i].SellOrder = ""
 				affected = true
 			}
 		}
-		return
 	}
 	return
 }
@@ -240,9 +242,9 @@ func (m *GridBuy) classica_new_order() (affected bool, err error) {
 			if activeIndex > 0 { //四舍五入不精准,可能到时略有误差,最后一格检查是否有足够btc
 				sellAmount = nowBtc - m.Datas[activeIndex-1].TotalBaseCurrency
 			}
-			orderid, err := m.SellOrder(sellAmount, m.Datas[activeIndex].SellPrice)
+			orderid, err := m.SellOrder(utils.Digits(sellAmount, 6), m.Datas[activeIndex].SellPrice)
 			if err != nil {
-				log.Println(err.Error())
+				log.Println(activeIndex, sellAmount, err.Error())
 				return affected, err
 			}
 			m.Datas[activeIndex].SellOrder = orderid

@@ -18,7 +18,7 @@ func init() {
 	if err != nil {
 		panic(err.Error())
 	}
-	log.Println("init")
+	//log.Println("init")
 }
 
 type Orders struct {

@@ -79,7 +79,6 @@ func (m *GridBuy) Register() {
 
 //Start 启动服务
 func (m *GridBuy) Start() {
-
 	err := m.Init()
 	if err != nil {
 		log.Println(err.Error())
