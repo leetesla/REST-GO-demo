@@ -43,7 +43,7 @@ func (ctl *LianghuaController) Router(r *gin.Engine) {
 		group.GET("/action", ctl.action)
 		group.GET("/delete", ctl.delete)
 		group.GET("/get", ctl.get)
-		group.GET("/GetTradeDetail", ctl.GetTradeDetail)
+		//group.GET("/GetTradeDetail", ctl.GetTradeDetail)
 		group.GET("/order_list", ctl.order_list)
 		group.GET("/profit", ctl.profit)
 	}
