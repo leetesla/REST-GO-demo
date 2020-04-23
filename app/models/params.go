@@ -75,7 +75,7 @@ type LHEditdParams struct {
 	AccountId     string  `form:"AccountId" binding:"required"`
 	QuoteCurrency string  `form:"QuoteCurrency" binding:"required"`
 	BaseCurrency  string  `form:"BaseCurrency" binding:"required"`
-	Name          string  `form:"BaseCurrency" binding:"required"`
+	Name          string  `form:"Name" binding:"required"`
 	Datas         string
 	Run           int64
 	MinPrice      float64 `form:"MinPrice" binding:"required"`

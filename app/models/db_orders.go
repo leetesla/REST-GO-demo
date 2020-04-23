@@ -174,9 +174,9 @@ func (m *Orders) SumProfit(stracyid int, starts int64) (float64, error) {
 	if err != nil {
 		return 0, err
 	}
-	//defer engineScan.Close()
+	defer engineScan.Close()
 	//engineScan.ShowSQL(true)
-	defer engineScan.ShowSQL(false)
+	//defer engineScan.ShowSQL(false)
 	return engineScan.Where("stracy_id=? and finishedat >?", stracyid, starts).Sum(m, "profit")
 }
 

@@ -138,7 +138,7 @@ func (m *GridBuy) CancelOrder(orderid string) error {
 func (m *GridBuy) GetOrder(orderid string) (models.OrderReturn, error) {
 	order := m.HuoBi.GetOrder(orderid)
 	if order.Status != "ok" {
-		return order, errors.New("cont get order")
+		return order, errors.New(fmt.Sprint("cont get order:", orderid))
 	}
 	order.Data.Amount_f, _ = strconv.ParseFloat(order.Data.Amount, 64)
 	order.Data.Price_f, _ = strconv.ParseFloat(order.Data.Price, 64)

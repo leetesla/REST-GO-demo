@@ -83,7 +83,10 @@ func (m *Stracy) Update(p LHEditdParams) error {
 		return err
 	}
 	defer engineScan.Close()
+	//engineScan.ShowSQL(true)
+	//defer engineScan.ShowSQL(false)
 	tm := new(Stracy)
+
 	tm.Capital = p.Capital
 	tm.Owner = p.Owner
 	tm.BaseCurrency = p.BaseCurrency
@@ -100,7 +103,7 @@ func (m *Stracy) Update(p LHEditdParams) error {
 	tm.Model = p.Model
 	tm.Run = p.Run
 	tm.LastUpdate = time.Now().Unix()
-	_, err = engineScan.Update(tm)
+	_, err = engineScan.Id(p.Id).Update(tm)
 	return err
 }
 
