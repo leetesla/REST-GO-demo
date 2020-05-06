@@ -95,7 +95,7 @@ func (m *GridBuy) Start() {
 	} else if m.Model == 3 {
 		m.work_sell()
 	}
-
+	m.Status = 0
 }
 
 //Init 获取交易对精度
