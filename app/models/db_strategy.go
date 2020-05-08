@@ -83,14 +83,15 @@ func (m *Stracy) Update(p LHEditdParams) error {
 		return err
 	}
 	defer engineScan.Close()
-	//engineScan.ShowSQL(true)
-	//defer engineScan.ShowSQL(false)
+	// engineScan.ShowSQL(true)
+	// defer engineScan.ShowSQL(false)
 	tm := new(Stracy)
 
 	tm.Capital = p.Capital
 	tm.Owner = p.Owner
 	tm.BaseCurrency = p.BaseCurrency
 	tm.QuoteCurrency = p.QuoteCurrency
+	tm.AccessKey = p.AccessKey
 	tm.SecretKey = p.SecretKey
 	tm.AccountId = p.AccountId
 	tm.Name = p.Name
