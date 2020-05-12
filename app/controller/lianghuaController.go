@@ -198,12 +198,12 @@ func (ctl *LianghuaController) edit(ctx *gin.Context) {
 		ctx.JSON(200, gin.H{"code": 1, "message": err.Error()})
 		return
 	}
-	log.Println(oldStracy.Datas)
+	//log.Println(oldStracy.Datas)
 	//取消order
 	oldHuobi := models.NewHuoBiEx(oldStracy.AccessKey, oldStracy.SecretKey)
 	newHuobi := models.NewHuoBiEx(params.AccessKey, params.SecretKey)
 	for i := 0; i < len(oldCtxts); i++ {
-		log.Println(oldCtxts[i])
+		//log.Println(oldCtxts[i])
 		if oldCtxts[i].BuyOrder != "" {
 			oldHuobi.SubmitCancel(oldCtxts[i].BuyOrder)
 			newHuobi.SubmitCancel(oldCtxts[i].BuyOrder)
