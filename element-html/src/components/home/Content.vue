@@ -115,7 +115,7 @@ mounted(){
   
   
   function get_data(vue){
-    vue.$http.get("/lianghua/list").then(resp => {
+    vue.$http.post("/lianghua/list").then(resp => {
         var code = resp.data.code;     
         //未登录            
         if(code != 0){
@@ -137,7 +137,7 @@ mounted(){
     })
   }
   function handle_start(index,vue){
-    vue.$http.get("/lianghua/start?Id="+vue.tableData[index].Id).then(resp => {
+    vue.$http.post("/lianghua/start?Id="+vue.tableData[index].Id).then(resp => {
         var code = resp.data.code;     
         //未登录            
         if(code != 0){
@@ -152,7 +152,7 @@ mounted(){
 
   }
   function handle_stop(index,vue){
-    vue.$http.get("/lianghua/stop?Id="+vue.tableData[index].Id).then(resp => {
+    vue.$http.post("/lianghua/stop?Id="+vue.tableData[index].Id).then(resp => {
         var code = resp.data.code;     
         //未登录            
         if(code != 0){
@@ -165,7 +165,7 @@ mounted(){
     })
   }
   function handle_action(index,vue){
-    vue.$http.get("/lianghua/action?Id="+vue.tableData[index].id).then(resp => {
+    vue.$http.post("/lianghua/action?Id="+vue.tableData[index].id).then(resp => {
         var code = resp.data.code;     
         //未登录            
         if(code != 0){
@@ -178,7 +178,7 @@ mounted(){
     })
   }
   function get_profit(index,vue){
-    vue.$http.get("/lianghua/profit?Id="+vue.tableData[index].Id).then(resp => {
+    vue.$http.post("/lianghua/profit?Id="+vue.tableData[index].Id).then(resp => {
         var code = resp.data.code;     
         //未登录            
         if(code != 0){
@@ -195,7 +195,7 @@ mounted(){
 
   }
   function handle_delete(index,vue){
-    vue.$http.get("/lianghua/delete?Id="+vue.tableData[index].Id).then(resp => {
+    vue.$http.post("/lianghua/delete?Id="+vue.tableData[index].Id).then(resp => {
         var code = resp.data.code;     
         //未登录            
         if(code != 0){

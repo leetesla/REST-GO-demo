@@ -7,10 +7,10 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/onethefour/REST-GO-demo/app/models"
-	"github.com/onethefour/REST-GO-demo/app/robot"
-	"github.com/onethefour/REST-GO-demo/app/utils"
-	//"github.com/onethefour/REST-GO-demo/models"
+	"REST-GO-demo/app/models"
+	"REST-GO-demo/app/robot"
+	"REST-GO-demo/app/utils"
+	//"REST-GO-demo/models"
 )
 
 //运行服务
@@ -30,22 +30,22 @@ type LianghuaController struct {
 func (ctl *LianghuaController) Router(r *gin.Engine) {
 	group := r.Group("/lianghua")
 	{
-		group.GET("/get_accounts", ctl.get_accounts)
-		group.GET("/get_symbols", ctl.get_symbols)
-		group.GET("/get_balance", ctl.get_balance)
-		group.GET("/get_price", ctl.get_price)
-		group.GET("/get_order", ctl.get_order)
-		group.GET("/add", ctl.add)
-		group.GET("/edit", ctl.edit)
-		group.GET("/list", ctl.list)
-		group.GET("/start", ctl.start)
-		group.GET("/stop", ctl.stop)
-		group.GET("/action", ctl.action)
-		group.GET("/delete", ctl.delete)
-		group.GET("/get", ctl.get)
-		//group.GET("/GetTradeDetail", ctl.GetTradeDetail)
-		group.GET("/order_list", ctl.order_list)
-		group.GET("/profit", ctl.profit)
+		group.POST("/get_accounts", ctl.get_accounts)
+		group.POST("/get_symbols", ctl.get_symbols)
+		group.POST("/get_balance", ctl.get_balance)
+		group.POST("/get_price", ctl.get_price)
+		group.POST("/get_order", ctl.get_order)
+		group.POST("/add", ctl.add)
+		group.POST("/edit", ctl.edit)
+		group.POST("/list", ctl.list)
+		group.POST("/start", ctl.start)
+		group.POST("/stop", ctl.stop)
+		group.POST("/action", ctl.action)
+		group.POST("/delete", ctl.delete)
+		group.POST("/get", ctl.get)
+		//group.POST("/GetTradeDetail", ctl.GetTradeDetail)
+		group.POST("/order_list", ctl.order_list)
+		group.POST("/profit", ctl.profit)
 	}
 }
 func (ctl *LianghuaController) profit(ctx *gin.Context) {

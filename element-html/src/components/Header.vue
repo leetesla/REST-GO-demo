@@ -60,7 +60,7 @@
         }
     }
     function checkloin(vue){
-        vue.$http.get("/account/get").then(resp => {
+        vue.$http.post("/account/get").then(resp => {
             var code = resp.data.code;     
             //未登录            
             if(code != 0){
@@ -77,7 +77,7 @@
         })
     }
     function logout(vue){
-        vue.$http.get("/account/logout").then(resp => {
+        vue.$http.post("/account/logout").then(resp => {
             
             var code = resp.data.code;
             var message = resp.data.message;
@@ -93,7 +93,7 @@
         })
     }
     function login(vue){
-        vue.$http.get("/account/login?account="+vue.form.account+"&pwd="+vue.form.pwd).then(resp => {
+        vue.$http.post("/account/login?account="+vue.form.account+"&pwd="+vue.form.pwd).then(resp => {
             console.log(resp.data.code)
             var code = resp.data.code;
             var message = resp.data.message;

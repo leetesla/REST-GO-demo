@@ -9,3 +9,6 @@
 ### 测试用例                                                                                                                                                  
 可以参考[接口测试](./services/Market_test.go)
 pkill -9 REST-GO-demo;rm -rf nohup.out;nohup ./REST-GO-demo &
+
+### 编译web
+cd ./element-html & npm install & npm run build & go-bindata-assetfs -pkg bindata ./dist/... -o ../app/bindata/bindata.go

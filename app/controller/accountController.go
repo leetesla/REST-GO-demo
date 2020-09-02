@@ -3,7 +3,7 @@ package controller
 import (
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
-	"github.com/onethefour/REST-GO-demo/app/models"
+	"REST-GO-demo/app/models"
 )
 
 type AccountController struct {
@@ -12,9 +12,9 @@ type AccountController struct {
 func (this *AccountController) Router(r *gin.Engine) {
 	group := r.Group("/account")
 	{
-		group.GET("/login", this.login)
-		group.GET("/logout", this.logout)
-		group.GET("/get", this.get)
+		group.POST("/login", this.login)
+		group.POST("/logout", this.logout)
+		group.POST("/get", this.get)
 	}
 }
 func (this *AccountController) get(ctx *gin.Context) {

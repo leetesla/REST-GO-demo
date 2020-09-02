@@ -6,8 +6,8 @@ import (
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 
-	"github.com/onethefour/REST-GO-demo/app"
-	"github.com/onethefour/REST-GO-demo/app/utils"
+	"REST-GO-demo/app"
+	"REST-GO-demo/app/utils"
 )
 
 func init() {

@@ -7,8 +7,8 @@ import (
 	"log"
 	"strconv"
 
-	appmodels "github.com/onethefour/REST-GO-demo/app/models"
-	"github.com/onethefour/REST-GO-demo/models"
+	appmodels "REST-GO-demo/app/models"
+	"REST-GO-demo/models"
 )
 
 //Now 获取服务当前时间戳

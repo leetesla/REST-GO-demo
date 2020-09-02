@@ -5,7 +5,7 @@ import (
 	"log"
 	"strconv"
 
-	"github.com/onethefour/REST-GO-demo/app/utils"
+	"REST-GO-demo/app/utils"
 )
 
 func init() {

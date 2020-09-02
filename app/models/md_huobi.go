@@ -6,8 +6,8 @@ import (
 
 	"encoding/json"
 
-	"github.com/onethefour/REST-GO-demo/models"
-	"github.com/onethefour/REST-GO-demo/untils"
+	"REST-GO-demo/models"
+	"REST-GO-demo/untils"
 )
 
 //xxx

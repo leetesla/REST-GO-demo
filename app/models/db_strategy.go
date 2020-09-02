@@ -3,7 +3,7 @@ package models
 import (
 	"time"
 
-	"github.com/onethefour/REST-GO-demo/app/utils"
+	"REST-GO-demo/app/utils"
 )
 
 func init() {

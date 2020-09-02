@@ -6,7 +6,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/onethefour/REST-GO-demo/app/models"
+	"REST-GO-demo/app/models"
 )
 
 //GridBuy 网格策略,只卖币,用户一段时间后手动买币

@@ -3,7 +3,7 @@ package robot
 import (
 	"log"
 
-	"github.com/onethefour/REST-GO-demo/app/utils"
+	"REST-GO-demo/app/utils"
 )
 
 // work_classical 经典网格策略

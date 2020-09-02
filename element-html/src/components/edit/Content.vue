@@ -218,7 +218,7 @@
 
 function get_form(vue){
   var Id = vue.$route.query.Id;
-  vue.$http.get("/lianghua/get?Id="+Id).then(resp => {
+  vue.$http.post("/lianghua/get?Id="+Id).then(resp => {
         var code = resp.data.code;     
         //未登录            
         if(code != 0){
@@ -257,7 +257,7 @@ function get_balance(vue){
   }
   vue.balance = "";
   if(vue.form.QuoteCurrency!="" || empty(vue.form.AccountId)){
-    vue.$http.get("/lianghua/get_balance?AccessKey="+vue.apiKey.AccessKey+"&SecretKey="+vue.apiKey.SecretKey+"&AccountId="+vue.form.AccountId+"&Currency="+vue.form.QuoteCurrency).then(resp => {
+    vue.$http.post("/lianghua/get_balance?AccessKey="+vue.apiKey.AccessKey+"&SecretKey="+vue.apiKey.SecretKey+"&AccountId="+vue.form.AccountId+"&Currency="+vue.form.QuoteCurrency).then(resp => {
         var code = resp.data.code;     
         //未登录            
         if(code != 0){
@@ -276,7 +276,7 @@ function get_balance(vue){
   }
 
 if(vue.form.BaseCurrency!=""){
-    vue.$http.get("/lianghua/get_balance?AccessKey="+vue.apiKey.AccessKey+"&SecretKey="+vue.apiKey.SecretKey+"&AccountId="+vue.form.AccountId+"&Currency="+vue.form.BaseCurrency).then(resp => {
+    vue.$http.post("/lianghua/get_balance?AccessKey="+vue.apiKey.AccessKey+"&SecretKey="+vue.apiKey.SecretKey+"&AccountId="+vue.form.AccountId+"&Currency="+vue.form.BaseCurrency).then(resp => {
         var code = resp.data.code;     
         //未登录            
         if(code != 0){
@@ -301,7 +301,7 @@ function get_accounts(vue){
   if(vue.apiKey.AccessKey == "" || vue.apiKey.SecretKey== ""){
     return;
   }
-  vue.$http.get("/lianghua/get_accounts?AccessKey="+vue.apiKey.AccessKey+"&SecretKey="+vue.apiKey.SecretKey).then(resp => {
+  vue.$http.post("/lianghua/get_accounts?AccessKey="+vue.apiKey.AccessKey+"&SecretKey="+vue.apiKey.SecretKey).then(resp => {
         var code = resp.data.code;     
         //未登录            
         if(code != 0){
@@ -317,7 +317,7 @@ function get_accounts(vue){
 
 
   function get_symbols(vue){
-      vue.$http.get("/lianghua/get_symbols").then(resp => {
+      vue.$http.post("/lianghua/get_symbols").then(resp => {
          var code = resp.data.status;     
          if(code != "ok"){
           return;
@@ -350,7 +350,7 @@ function get_accounts(vue){
       for (let it in vue.stracy) {
       ret += it + '=' + vue.stracy[it] + '&';
     }
-    vue.$http.get("/lianghua/edit?"+ret).then(resp => {
+    vue.$http.post("/lianghua/edit?"+ret).then(resp => {
         var code = resp.data.code;     
         //未登录            
         if(code != 0){
@@ -370,7 +370,7 @@ function get_price(vue){
   if (empty(vue.form.BaseCurrency) || empty(vue.form.AccountId)){
     return
   }
-  vue.$http.get("/lianghua/get_price?AccessKey="+vue.apiKey.AccessKey+"&SecretKey="+vue.apiKey.SecretKey+"&AccountId="+vue.form.AccountId+"&QuoteCurrency="+vue.form.QuoteCurrency+"&BaseCurrency="+vue.form.BaseCurrency).then(resp => {
+  vue.$http.post("/lianghua/get_price?AccessKey="+vue.apiKey.AccessKey+"&SecretKey="+vue.apiKey.SecretKey+"&AccountId="+vue.form.AccountId+"&QuoteCurrency="+vue.form.QuoteCurrency+"&BaseCurrency="+vue.form.BaseCurrency).then(resp => {
         var code = resp.data.code;     
         //未登录            
         if(code != 0){

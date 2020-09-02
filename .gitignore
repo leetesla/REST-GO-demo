@@ -3,3 +3,5 @@
 /cmd
 /starecms.db
 /nohup.out
+go.sum
+/.idea

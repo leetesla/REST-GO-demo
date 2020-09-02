@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"log"
 
-	"github.com/onethefour/REST-GO-demo/app/utils"
+	"REST-GO-demo/app/utils"
 )
 
 func init() {
